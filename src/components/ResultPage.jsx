@@ -344,7 +344,7 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '308px',
-          height: '234px',
+          height: '248px',
           left: '23px',
           top: '360px',
           background: '#FFEACD',
@@ -476,7 +476,7 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '227px',
-          height: '95px',
+          height: '101px',
           left: '344px',
           top: '476px',
           background: '#FFEACD',
@@ -543,9 +543,9 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '227px',
-          height: '117px',
+          height: '112px',
           left: '344px',
-          top: '583px',
+          top: '588px',
           background: '#FFEACD',
           borderRadius: '8px'
         }} />
@@ -559,7 +559,7 @@ const ResultPage = ({ data }) => {
             width: '10px',
             height: '10px',
             left: '353px',
-            top: '595px'
+            top: '599px'
           }}
           onError={(e) => {
             console.error('医疗健康图标加载失败:', e.target.src)
@@ -573,7 +573,7 @@ const ResultPage = ({ data }) => {
           width: '61px',
           height: '14px',
           left: '360px',
-          top: '594px',
+          top: '598px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '700',
@@ -609,9 +609,9 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '308px',
-          height: '90px',
+          height: '80px',
           left: '23px',
-          top: '610px',
+          top: '620px',
           background: '#FFEACD',
           borderRadius: '8px'
         }} />
@@ -625,7 +625,7 @@ const ResultPage = ({ data }) => {
             width: '10px',
             height: '10px',
             left: '37px',
-            top: '617px'
+            top: '630px'
           }}
           onError={(e) => {
             console.error('爱情运势图标加载失败:', e.target.src)
@@ -639,7 +639,7 @@ const ResultPage = ({ data }) => {
           width: '66px',
           height: '11px',
           left: '44px',
-          top: '616px',
+          top: '629px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '700',
@@ -656,7 +656,7 @@ const ResultPage = ({ data }) => {
           width: '284px',
           height: '49px',
           left: '37px',
-          top: '633px',
+          top: '646px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
