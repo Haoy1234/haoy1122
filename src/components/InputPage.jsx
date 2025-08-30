@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import SliderPicker from './SliderPicker'
 import { getProvinces, getCities } from '../data/cityData'
 
 const InputPage = ({ onSubmit }) => {
@@ -138,37 +137,76 @@ const InputPage = ({ onSubmit }) => {
         {/* 出生日期时间选择器 */}
         <div className="bg-card-bg rounded-lg p-4 shadow-lg">
           <h3 className="text-text-primary font-medium mb-4 text-center">出生日期时间</h3>
-          <div className="grid grid-cols-5 gap-4">
-            <SliderPicker
-              options={yearOptions}
-              value={formData.year.toString()}
-              onChange={(value) => handleInputChange('year', parseInt(value))}
-              label="年"
-            />
-            <SliderPicker
-              options={monthOptions}
-              value={formData.month.toString()}
-              onChange={(value) => handleInputChange('month', parseInt(value))}
-              label="月"
-            />
-            <SliderPicker
-              options={dayOptions}
-              value={formData.day.toString()}
-              onChange={(value) => handleInputChange('day', parseInt(value))}
-              label="日"
-            />
-            <SliderPicker
-              options={hourOptions}
-              value={formData.hour.toString().padStart(2, '0')}
-              onChange={(value) => handleInputChange('hour', parseInt(value))}
-              label="时"
-            />
-            <SliderPicker
-              options={minuteOptions}
-              value={formData.minute.toString().padStart(2, '0')}
-              onChange={(value) => handleInputChange('minute', parseInt(value))}
-              label="分"
-            />
+          <div className="grid grid-cols-5 gap-3">
+            {/* 年 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2 text-center text-sm">年</label>
+              <select
+                value={formData.year}
+                onChange={(e) => handleInputChange('year', parseInt(e.target.value))}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary text-sm"
+              >
+                {yearOptions.map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* 月 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2 text-center text-sm">月</label>
+              <select
+                value={formData.month}
+                onChange={(e) => handleInputChange('month', parseInt(e.target.value))}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary text-sm"
+              >
+                {monthOptions.map(month => (
+                  <option key={month} value={month}>{month}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* 日 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2 text-center text-sm">日</label>
+              <select
+                value={formData.day}
+                onChange={(e) => handleInputChange('day', parseInt(e.target.value))}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary text-sm"
+              >
+                {dayOptions.map(day => (
+                  <option key={day} value={day}>{day}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* 时 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2 text-center text-sm">时</label>
+              <select
+                value={formData.hour}
+                onChange={(e) => handleInputChange('hour', parseInt(e.target.value))}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary text-sm"
+              >
+                {hourOptions.map(hour => (
+                  <option key={hour} value={parseInt(hour)}>{hour}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* 分 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2 text-center text-sm">分</label>
+              <select
+                value={formData.minute}
+                onChange={(e) => handleInputChange('minute', parseInt(e.target.value))}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary text-sm"
+              >
+                {minuteOptions.map(minute => (
+                  <option key={minute} value={parseInt(minute)}>{minute}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
@@ -176,18 +214,36 @@ const InputPage = ({ onSubmit }) => {
         <div className="bg-card-bg rounded-lg p-4 shadow-lg">
           <h3 className="text-text-primary font-medium mb-4 text-center">出生地点</h3>
           <div className="grid grid-cols-2 gap-4">
-            <SliderPicker
-              options={provinceOptions}
-              value={formData.province}
-              onChange={(value) => handleInputChange('province', value)}
-              label="省/直辖市/自治区"
-            />
-            <SliderPicker
-              options={cityOptions}
-              value={formData.city}
-              onChange={(value) => handleInputChange('city', value)}
-              label="市/区"
-            />
+            {/* 省份 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2">省/直辖市/自治区</label>
+              <select
+                value={formData.province}
+                onChange={(e) => handleInputChange('province', e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary"
+              >
+                <option value="">请选择省份</option>
+                {provinceOptions.map(province => (
+                  <option key={province} value={province}>{province}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* 城市 */}
+            <div>
+              <label className="block text-text-primary font-medium mb-2">市/区</label>
+              <select
+                value={formData.city}
+                onChange={(e) => handleInputChange('city', e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary"
+                disabled={!formData.province}
+              >
+                <option value="">请选择城市</option>
+                {cityOptions.map(city => (
+                  <option key={city} value={city}>{city}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
