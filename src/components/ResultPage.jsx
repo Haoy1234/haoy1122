@@ -332,7 +332,7 @@ const ResultPage = ({ data }) => {
           fontStyle: 'normal',
           fontWeight: '700',
           fontSize: '8px',
-          lineHeight: '16px',
+          lineHeight: '20px',
           textAlign: 'center',
           color: '#000000',
           overflow: 'hidden'
@@ -389,7 +389,7 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '267px',
-          height: '195px',
+          height: '211px',
           left: '37px',
           top: '387px',
           fontFamily: 'Alexandria',
@@ -522,7 +522,7 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '211px',
-          height: '58px',
+          height: '64px',
           left: '353px',
           top: '504px',
           fontFamily: 'Alexandria',
@@ -588,9 +588,9 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '211px',
-          height: '68px',
+          height: '75px',
           left: '353px',
-          top: '612px',
+          top: '617px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
