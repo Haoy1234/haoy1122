@@ -119,15 +119,14 @@ const ResultPage = ({ data }) => {
       >
         {/* 新的背景图片 - 完整覆盖 */}
         <img 
-          src="/images/背景图片.png"
+          src="/images/背景_画板 1.png"
           alt="背景"
           style={{
             position: 'absolute',
             width: '597px',
             height: '845px',
             left: '-1px',
-            top: '0px',
-            objectFit: 'cover'
+            top: '0px'
           }}
           onError={(e) => {
             console.error('背景图片加载失败:', e.target.src)
