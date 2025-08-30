@@ -117,18 +117,17 @@ const ResultPage = ({ data }) => {
           overflow: 'hidden' // 防止内容溢出
         }}
       >
-        {/* 背景图片 */}
+        {/* 新的背景图片 - 完整覆盖 */}
         <img 
-          src="/images/背景图片 (node-id=14).png"
+          src="/images/背景图片.png"
           alt="背景"
           style={{
             position: 'absolute',
-            width: '740px',
-            height: '1042px',
-            left: '-85px',
-            top: '-293px',
-            objectFit: 'cover',
-            filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))'
+            width: '597px',
+            height: '845px',
+            left: '-1px',
+            top: '0px',
+            objectFit: 'cover'
           }}
           onError={(e) => {
             console.error('背景图片加载失败:', e.target.src)
@@ -267,7 +266,7 @@ const ResultPage = ({ data }) => {
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
+          fontSize: '7.5px',
           lineHeight: '12px',
           textAlign: 'center',
           color: '#000000',
@@ -393,12 +392,12 @@ const ResultPage = ({ data }) => {
           width: '267px',
           height: '195px',
           left: '37px',
-          top: '392px',
+          top: '387px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
-          lineHeight: '12px',
+          fontSize: '7.5px',
+          lineHeight: '10px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
@@ -463,8 +462,8 @@ const ResultPage = ({ data }) => {
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
-          lineHeight: '12px',
+          fontSize: '7.5px',
+          lineHeight: '10px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
@@ -526,12 +525,12 @@ const ResultPage = ({ data }) => {
           width: '211px',
           height: '58px',
           left: '353px',
-          top: '507px',
+          top: '504px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
-          lineHeight: '12px',
+          fontSize: '7.5px',
+          lineHeight: '10px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
@@ -545,7 +544,7 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '227px',
-          height: '110px',
+          height: '117px',
           left: '344px',
           top: '583px',
           background: '#FFEACD',
@@ -592,12 +591,12 @@ const ResultPage = ({ data }) => {
           width: '211px',
           height: '68px',
           left: '353px',
-          top: '616px',
+          top: '612px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
-          lineHeight: '12px',
+          fontSize: '7.5px',
+          lineHeight: '10px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
@@ -611,9 +610,9 @@ const ResultPage = ({ data }) => {
         <div style={{
           position: 'absolute',
           width: '308px',
-          height: '85px',
+          height: '90px',
           left: '23px',
-          top: '608px',
+          top: '610px',
           background: '#FFEACD',
           borderRadius: '8px'
         }} />
@@ -657,13 +656,13 @@ const ResultPage = ({ data }) => {
           position: 'absolute',
           width: '284px',
           height: '49px',
-          left: '36px',
-          top: '635px',
+          left: '37px',
+          top: '633px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '500',
-          fontSize: '8px',
-          lineHeight: '12px',
+          fontSize: '7.5px',
+          lineHeight: '9px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
@@ -679,7 +678,7 @@ const ResultPage = ({ data }) => {
           width: '202px',
           height: '111px',
           left: '23px',
-          top: '706px',
+          top: '711px',
           background: '#FFEACD',
           borderRadius: '8px'
         }} />
@@ -693,7 +692,7 @@ const ResultPage = ({ data }) => {
             width: '10px',
             height: '10px',
             left: '37px',
-            top: '717px'
+            top: '722px'
           }}
           onError={(e) => {
             console.error('锦鲤券图标加载失败:', e.target.src)
@@ -707,7 +706,7 @@ const ResultPage = ({ data }) => {
           width: '66px',
           height: '12px',
           left: '44px',
-          top: '716px',
+          top: '721px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '700',
@@ -745,7 +744,7 @@ const ResultPage = ({ data }) => {
           width: '338px',
           height: '111px',
           left: '233px',
-          top: '706px',
+          top: '711px',
           background: '#FFEACD',
           borderRadius: '8px'
         }} />
@@ -759,7 +758,7 @@ const ResultPage = ({ data }) => {
             width: '12px',
             height: '12px',
             left: '245px',
-            top: '716px'
+            top: '721px'
           }}
           onError={(e) => {
             console.error('祭奠蜡烛图标加载失败:', e.target.src)
@@ -773,7 +772,7 @@ const ResultPage = ({ data }) => {
           width: '63px',
           height: '12px',
           left: '252px',
-          top: '716px',
+          top: '721px',
           fontFamily: 'Alexandria',
           fontStyle: 'normal',
           fontWeight: '700',
