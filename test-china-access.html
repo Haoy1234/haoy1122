@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国访问测试工具 - 黄小仙来也</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .title {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .url-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .test-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        .test-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .speed-test {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        
+        .speed-item {
+            text-align: center;
+        }
+        
+        .speed-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .speed-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .recommendations {
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .rec-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🇨🇳 中国访问测试工具</h1>
+        <p class="subtitle">测试你的网站在中国大陆的访问情况</p>
+        
+        <div class="test-section">
+            <div class="test-title">🌐 网站访问测试</div>
+            <input type="url" class="url-input" id="testUrl" placeholder="输入你的网站地址，例如：https://your-site.vercel.app" value="">
+            <br>
+            <button class="test-btn" onclick="testAccess()">测试访问速度</button>
+            <button class="test-btn" onclick="testPing()">Ping测试</button>
+            <div id="testResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">🚀 推荐的部署平台</div>
+            <div class="speed-test">
+                <div class="speed-item">
+                    <div class="speed-value" id="githubSpeed">测试中...</div>
+                    <div class="speed-label">GitHub Pages</div>
+                </div>
+                <div class="speed-item">
+                    <div class="speed-value" id="netlifySpeed">测试中...</div>
+                    <div class="speed-label">Netlify</div>
+                </div>
+                <div class="speed-item">
+                    <div class="speed-value" id="vercelSpeed">测试中...</div>
+                    <div class="speed-label">Vercel</div>
+                </div>
+            </div>
+            <button class="test-btn" onclick="testPlatforms()">测试平台速度</button>
+        </div>
+        
+        <div class="recommendations">
+            <div class="test-title">💡 解决方案推荐</div>
+            <div class="rec-item">
+                <strong>🥇 GitHub Pages</strong> - 免费，中国访问良好
+                <br><small>地址：https://haoy1234.github.io/-/</small>
+            </div>
+            <div class="rec-item">
+                <strong>🥈 Netlify</strong> - 功能强大，访问稳定
+                <br><small>拖拽dist文件夹即可部署</small>
+            </div>
+            <div class="rec-item">
+                <strong>🥉 腾讯云/阿里云</strong> - 国内服务商，速度最快
+                <br><small>需要实名认证，少量费用</small>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <button class="test-btn" onclick="openGitHubPages()" style="background: #28a745;">
+                🚀 立即部署到 GitHub Pages
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 预填充用户的网站地址
+        document.getElementById('testUrl').value = 'https://haoy1234.github.io/-/';
+        
+        async function testAccess() {
+            const url = document.getElementById('testUrl').value;
+            const resultDiv = document.getElementById('testResult');
+            
+            if (!url) {
+                resultDiv.innerHTML = '<div class="error">请输入网站地址</div>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="info">正在测试访问速度...</div>';
+            
+            const startTime = Date.now();
+            
+            try {
+                const response = await fetch(url, { mode: 'no-cors' });
+                const endTime = Date.now();
+                const loadTime = endTime - startTime;
+                
+                let resultClass = 'success';
+                let message = `✅ 网站可以访问！加载时间：${loadTime}ms`;
+                
+                if (loadTime > 5000) {
+                    resultClass = 'warning';
+                    message = `⚠️ 网站可以访问，但速度较慢：${loadTime}ms`;
+                } else if (loadTime > 10000) {
+                    resultClass = 'error';
+                    message = `❌ 网站访问超时：${loadTime}ms`;
+                }
+                
+                resultDiv.innerHTML = `<div class="${resultClass}">${message}</div>`;
+                
+            } catch (error) {
+                resultDiv.innerHTML = '<div class="error">❌ 网站无法访问或加载失败</div>';
+            }
+        }
+        
+        async function testPing() {
+            const url = document.getElementById('testUrl').value;
+            const resultDiv = document.getElementById('testResult');
+            
+            if (!url) {
+                resultDiv.innerHTML = '<div class="error">请输入网站地址</div>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="info">正在进行连通性测试...</div>';
+            
+            // 简单的连通性测试
+            const startTime = Date.now();
+            const img = new Image();
+            
+            img.onload = function() {
+                const endTime = Date.now();
+                const pingTime = endTime - startTime;
+                resultDiv.innerHTML = `<div class="success">✅ 连通性良好！响应时间：${pingTime}ms</div>`;
+            };
+            
+            img.onerror = function() {
+                resultDiv.innerHTML = '<div class="error">❌ 连通性测试失败，可能存在访问问题</div>';
+            };
+            
+            // 尝试加载网站的favicon或其他资源
+            img.src = url + '/favicon.ico?' + Date.now();
+        }
+        
+        async function testPlatforms() {
+            const platforms = [
+                { id: 'githubSpeed', url: 'https://github.com', name: 'GitHub' },
+                { id: 'netlifySpeed', url: 'https://netlify.com', name: 'Netlify' },
+                { id: 'vercelSpeed', url: 'https://vercel.com', name: 'Vercel' }
+            ];
+            
+            platforms.forEach(async (platform) => {
+                const element = document.getElementById(platform.id);
+                element.textContent = '测试中...';
+                
+                const startTime = Date.now();
+                
+                try {
+                    await fetch(platform.url, { mode: 'no-cors' });
+                    const endTime = Date.now();
+                    const loadTime = endTime - startTime;
+                    
+                    element.textContent = loadTime + 'ms';
+                    element.style.color = loadTime < 2000 ? '#28a745' : loadTime < 5000 ? '#ffc107' : '#dc3545';
+                    
+                } catch (error) {
+                    element.textContent = '超时';
+                    element.style.color = '#dc3545';
+                }
+            });
+        }
+        
+        function openGitHubPages() {
+            alert('请运行项目中的 deploy-github-pages.bat 脚本来部署到 GitHub Pages！');
+        }
+        
+        // 页面加载时自动测试平台速度
+        window.onload = function() {
+            setTimeout(testPlatforms, 1000);
+        };
+    </script>
+</body>
+</html>

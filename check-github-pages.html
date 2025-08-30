@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 配置检查 - 黄小仙来也</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .title {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .step {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-success:hover {
+            background: #1e7e34;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .code {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checklist li:before {
+            content: "☐ ";
+            color: #007bff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .checklist li.done:before {
+            content: "✅ ";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔧 GitHub Pages 404 修复指南</h1>
+        <p class="subtitle">解决 GitHub Pages 显示 404 错误的问题</p>
+        
+        <div class="alert alert-danger">
+            <strong>❌ 当前状态：</strong> GitHub Pages 显示 404 错误
+            <br><strong>🎯 目标：</strong> 让网站正常显示黄小仙八字分析页面
+        </div>
+        
+        <div class="step">
+            <div class="step-title">🔍 第一步：检查 GitHub Pages 设置</div>
+            <div class="step-content">
+                <p>访问你的仓库设置页面，确保 GitHub Pages 已正确配置：</p>
+                <ul class="checklist">
+                    <li>Source 设置为 "Deploy from a branch"</li>
+                    <li>Branch 选择 "gh-pages"</li>
+                    <li>Folder 选择 "/ (root)"</li>
+                    <li>点击 "Save" 保存设置</li>
+                </ul>
+                <a href="https://github.com/Haoy1234/-/settings/pages" target="_blank" class="btn">
+                    🔧 打开 GitHub Pages 设置
+                </a>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">🚀 第二步：重新部署网站</div>
+            <div class="step-content">
+                <p>运行修复脚本来重新部署网站：</p>
+                <div class="code">fix-github-pages.bat</div>
+                <p>这个脚本会：</p>
+                <ul>
+                    <li>重新构建项目</li>
+                    <li>清理旧的部署</li>
+                    <li>重新推送到 gh-pages 分支</li>
+                    <li>确保文件结构正确</li>
+                </ul>
+                <button class="btn btn-warning" onclick="showManualSteps()">
+                    📋 显示手动步骤
+                </button>
+            </div>
+        </div>
+        
+        <div class="step" id="manualSteps" style="display: none;">
+            <div class="step-title">⚙️ 手动修复步骤</div>
+            <div class="step-content">
+                <p>如果脚本无法运行，请手动执行以下命令：</p>
+                <div class="code">
+                    # 1. 构建项目<br>
+                    npm run build<br><br>
+                    
+                    # 2. 删除旧分支<br>
+                    git push origin --delete gh-pages<br><br>
+                    
+                    # 3. 重新部署<br>
+                    git add dist -f<br>
+                    git commit -m "Fix GitHub Pages"<br>
+                    git subtree push --prefix dist origin gh-pages
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">⏰ 第三步：等待生效</div>
+            <div class="step-content">
+                <p>GitHub Pages 需要几分钟时间来处理更新：</p>
+                <ul class="checklist">
+                    <li>等待 5-10 分钟</li>
+                    <li>检查 GitHub Actions 是否完成</li>
+                    <li>访问网站测试</li>
+                    <li>清除浏览器缓存</li>
+                </ul>
+                <a href="https://github.com/Haoy1234/-/actions" target="_blank" class="btn">
+                    🔄 查看部署状态
+                </a>
+                <a href="https://haoy1234.github.io/-/" target="_blank" class="btn btn-success">
+                    🌐 测试网站访问
+                </a>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">🛠️ 第四步：验证修复</div>
+            <div class="step-content">
+                <p>确认网站正常工作：</p>
+                <ul class="checklist">
+                    <li>页面显示黄小仙来也标题</li>
+                    <li>输入表单正常显示</li>
+                    <li>可以输入姓名、性别等信息</li>
+                    <li>点击分析按钮有响应</li>
+                </ul>
+                
+                <div class="alert alert-success" style="margin-top: 20px;">
+                    <strong>✅ 修复成功标志：</strong>
+                    <br>• 网站显示完整的八字分析界面
+                    <br>• 没有 404 错误页面
+                    <br>• 所有功能正常工作
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <h3>🎯 最终目标网站地址</h3>
+            <div class="code" style="font-size: 18px; color: #007bff;">
+                https://haoy1234.github.io/-/
+            </div>
+            <p style="color: #666; margin-top: 10px;">
+                中国用户可以正常访问的八字分析网站
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showManualSteps() {
+            const element = document.getElementById('manualSteps');
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // 自动检查网站状态
+        function checkWebsiteStatus() {
+            const url = 'https://haoy1234.github.io/-/';
+            const img = new Image();
+            
+            img.onload = function() {
+                document.querySelector('.alert-danger').className = 'alert alert-success';
+                document.querySelector('.alert-danger strong').innerHTML = '✅ 当前状态：';
+                document.querySelector('.alert-danger').innerHTML = 
+                    '<strong>✅ 当前状态：</strong> 网站可以访问！<br><strong>🎉 成功：</strong> GitHub Pages 已正常工作';
+            };
+            
+            img.onerror = function() {
+                console.log('网站仍然无法访问，需要继续修复');
+            };
+            
+            img.src = url + 'favicon.ico?' + Date.now();
+        }
+        
+        // 页面加载后检查状态
+        setTimeout(checkWebsiteStatus, 2000);
+    </script>
+</body>
+</html>
