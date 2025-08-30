@@ -96,7 +96,7 @@ const InputPage = ({ onSubmit }) => {
       <div className="mb-6 text-center">
         <div className="flex items-center justify-center mb-4">
           <img 
-            src="/-/images/Logo图标 (node-id=142).png" 
+            src="./images/Logo图标 (node-id=142).png" 
             alt="黄小仙Logo" 
             className="w-8 h-8 mr-3"
             onError={(e) => {

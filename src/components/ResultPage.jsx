@@ -119,7 +119,7 @@ const ResultPage = ({ data }) => {
       >
         {/* 新的背景图片 - 完整覆盖 */}
         <img 
-          src="/-/images/背景_画板 1.png"
+          src="./images/背景_画板 1.png"
           alt="背景"
           style={{
             position: 'absolute',
@@ -136,7 +136,7 @@ const ResultPage = ({ data }) => {
 
         {/* Logo图标 */}
         <img 
-          src="/-/images/Logo图标 (node-id=142).png"
+          src="./images/Logo图标 (node-id=142).png"
           alt="Logo"
           style={{
             position: 'absolute',
@@ -154,7 +154,7 @@ const ResultPage = ({ data }) => {
 
         {/* 黄小仙来也 Logo文字 */}
         <img 
-          src="/-/images/标题字体图片 (node-id=143).png"
+          src="./images/标题字体图片 (node-id=143).png"
           alt="黄小仙来也"
           style={{
             position: 'absolute',
@@ -171,7 +171,7 @@ const ResultPage = ({ data }) => {
 
         {/* 右上角装饰图片 */}
         <img 
-          src="/-/images/右上角装饰图 (node-id=144).png"
+          src="./images/右上角装饰图 (node-id=144).png"
           alt="装饰"
           style={{
             position: 'absolute',
@@ -223,7 +223,7 @@ const ResultPage = ({ data }) => {
 
         {/* 总结图标 */}
         <img 
-          src="/-/images/总结图标 (node-id=138).png"
+          src="./images/总结图标 (node-id=138).png"
           alt="总结"
           style={{
             position: 'absolute',
@@ -289,7 +289,7 @@ const ResultPage = ({ data }) => {
 
         {/* 八卦图标 */}
         <img 
-          src="/-/images/八卦图标 (node-id=120).png"
+          src="./images/八卦图标 (node-id=120).png"
           alt="八卦"
           style={{
             position: 'absolute',
@@ -353,7 +353,7 @@ const ResultPage = ({ data }) => {
 
         {/* 运势指南图标 */}
         <img 
-          src="/-/images/运势指南图标 (node-id=141).png"
+          src="./images/运势指南图标 (node-id=141).png"
           alt="运势指南"
           style={{
             position: 'absolute',
@@ -419,7 +419,7 @@ const ResultPage = ({ data }) => {
 
         {/* 人人图标 */}
         <img 
-          src="/-/images/人人图标 (node-id=137).png"
+          src="./images/人人图标 (node-id=137).png"
           alt="人人"
           style={{
             position: 'absolute',
@@ -485,7 +485,7 @@ const ResultPage = ({ data }) => {
 
         {/* 办公图标 */}
         <img 
-          src="/-/images/办公图标 (node-id=136).png"
+          src="./images/办公图标 (node-id=136).png"
           alt="办公"
           style={{
             position: 'absolute',
@@ -552,7 +552,7 @@ const ResultPage = ({ data }) => {
 
         {/* 医疗健康图标 */}
         <img 
-          src="/-/images/医疗健康图标 (node-id=121).png"
+          src="./images/医疗健康图标 (node-id=121).png"
           alt="医疗健康"
           style={{
             position: 'absolute',
@@ -618,7 +618,7 @@ const ResultPage = ({ data }) => {
 
         {/* 爱情运势图标 */}
         <img 
-          src="/-/images/爱情运势图标 (node-id=135).png"
+          src="./images/爱情运势图标 (node-id=135).png"
           alt="爱情运势"
           style={{
             position: 'absolute',
@@ -684,7 +684,7 @@ const ResultPage = ({ data }) => {
 
         {/* 锦鲤券图标 */}
         <img 
-          src="/-/images/锦鲤券图标 (node-id=139).png"
+          src="./images/锦鲤券图标 (node-id=139).png"
           alt="锦鲤券"
           style={{
             position: 'absolute',
@@ -750,7 +750,7 @@ const ResultPage = ({ data }) => {
 
         {/* 祭奠蜡烛图标 */}
         <img 
-          src="/-/images/祭奠蜡烛图标 (node-id=140).png"
+          src="./images/祭奠蜡烛图标 (node-id=140).png"
           alt="祭奠蜡烛"
           style={{
             position: 'absolute',
