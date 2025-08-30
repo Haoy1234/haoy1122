@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄小仙来也 - 二维码生成器</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="url"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="url"]:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+        .btn {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #e67e22, #d35400);
+        }
+        .qr-result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        .qr-code {
+            margin: 20px 0;
+        }
+        .platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .platform {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .platform:hover {
+            border-color: #f39c12;
+            transform: translateY(-2px);
+        }
+        .platform h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .platform p {
+            margin: 0 0 15px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .platform a {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .platform a:hover {
+            background: #0056b3;
+        }
+        .netlify { border-color: #00c7b7; }
+        .vercel { border-color: #000; }
+        .github { border-color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔮 黄小仙来也</h1>
+            <p>二维码生成器 & 部署助手</p>
+        </div>
+
+        <div class="form-group">
+            <label for="website-url">网站链接 (部署完成后填入):</label>
+            <input type="url" id="website-url" placeholder="例: https://your-site.netlify.app">
+        </div>
+
+        <button class="btn" onclick="generateQR()">🎯 生成二维码</button>
+
+        <div class="qr-result" id="qr-result">
+            <h3>📱 扫描二维码访问网站</h3>
+            <div class="qr-code" id="qr-code"></div>
+            <p>保存二维码图片，分享给用户即可访问你的八字分析网站！</p>
+        </div>
+
+        <div class="platforms">
+            <div class="platform netlify">
+                <h3>🚀 Netlify</h3>
+                <p>最简单的部署方式<br>拖拽 dist 文件夹即可</p>
+                <a href="https://netlify.com" target="_blank">立即部署</a>
+            </div>
+            
+            <div class="platform vercel">
+                <h3>⚡ Vercel</h3>
+                <p>自动化部署<br>连接GitHub仓库</p>
+                <a href="https://vercel.com" target="_blank">立即部署</a>
+            </div>
+            
+            <div class="platform github">
+                <h3>📚 GitHub Pages</h3>
+                <p>免费静态托管<br>需要GitHub仓库</p>
+                <a href="https://pages.github.com" target="_blank">了解更多</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #f39c12;">
+            <h4 style="margin: 0 0 10px 0; color: #856404;">📋 部署步骤:</h4>
+            <ol style="margin: 0; color: #856404;">
+                <li>选择上方任一平台</li>
+                <li>上传 <code>dist</code> 文件夹</li>
+                <li>获得网站链接</li>
+                <li>在上方输入链接生成二维码</li>
+                <li>分享二维码给用户</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        function generateQR() {
+            const url = document.getElementById('website-url').value;
+            const qrResult = document.getElementById('qr-result');
+            const qrCode = document.getElementById('qr-code');
+            
+            if (!url) {
+                alert('请输入网站链接！');
+                return;
+            }
+            
+            if (!isValidUrl(url)) {
+                alert('请输入有效的网站链接！');
+                return;
+            }
+            
+            // 清空之前的二维码
+            qrCode.innerHTML = '';
+            
+            // 生成二维码
+            QRCode.toCanvas(qrCode, url, {
+                width: 256,
+                height: 256,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                margin: 2
+            }, function (error) {
+                if (error) {
+                    console.error(error);
+                    alert('二维码生成失败！');
+                } else {
+                    qrResult.style.display = 'block';
+                    
+                    // 添加下载按钮
+                    const canvas = qrCode.querySelector('canvas');
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.textContent = '💾 下载二维码';
+                    downloadBtn.className = 'btn';
+                    downloadBtn.style.marginTop = '15px';
+                    downloadBtn.onclick = function() {
+                        const link = document.createElement('a');
+                        link.download = '黄小仙来也-二维码.png';
+                        link.href = canvas.toDataURL();
+                        link.click();
+                    };
+                    
+                    // 移除之前的下载按钮
+                    const existingBtn = qrCode.querySelector('button');
+                    if (existingBtn) {
+                        existingBtn.remove();
+                    }
+                    
+                    qrCode.appendChild(downloadBtn);
+                }
+            });
+        }
+        
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+        
+        // 回车键生成二维码
+        document.getElementById('website-url').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateQR();
+            }
+        });
+    </script>
+</body>
+</html>
