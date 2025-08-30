@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/-/',  // GitHub Pages 子路径
+  base: './',  // 新项目使用相对路径
   server: {
-    port: 3000,
+    port: 5173,  // 使用新的端口
     open: true
   }
 })

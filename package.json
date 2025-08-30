@@ -1,8 +1,8 @@
 {
-  "name": "huangxiaoxian-fortune",
-  "version": "1.0.0",
+  "name": "huangxiaoxian-new",
+  "version": "2.0.0",
   "type": "module",
-  "description": "黄小仙八字分析前端应用",
+  "description": "黄小仙八字分析前端应用 - 新版本",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
