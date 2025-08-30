@@ -89,7 +89,7 @@ const SliderPicker = ({
       <div className="relative bg-white rounded-lg border-2 border-gray-200 overflow-hidden">
         {/* 选中指示器 */}
         <div 
-          className="absolute left-0 right-0 bg-yellow-100 border-y-2 border-yellow-400 pointer-events-none z-10"
+          className="absolute left-0 right-0 bg-yellow-100 bg-opacity-50 border-y-2 border-yellow-400 border-opacity-60 pointer-events-none z-10"
           style={{
             top: '50%',
             height: `${itemHeight}px`,
@@ -98,8 +98,8 @@ const SliderPicker = ({
         />
         
         {/* 渐变遮罩 */}
-        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white to-transparent pointer-events-none z-20" />
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white from-0% via-white via-30% to-transparent to-100% opacity-80 pointer-events-none z-20" />
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white from-0% via-white via-30% to-transparent to-100% opacity-80 pointer-events-none z-20" />
         
         {/* 滚动容器 */}
         <div

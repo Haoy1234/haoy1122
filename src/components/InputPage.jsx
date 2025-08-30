@@ -121,29 +121,16 @@ const InputPage = ({ onSubmit }) => {
           {/* 性别选择 */}
           <div className="bg-card-bg rounded-lg p-4 shadow-lg">
             <label className="block text-text-primary font-medium mb-2">性别</label>
-            <div className="flex space-x-4 mt-3">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="男"
-                  checked={formData.gender === '男'}
-                  onChange={(e) => handleInputChange('gender', e.target.value)}
-                  className="mr-2"
-                />
-                <span className="text-text-primary">男</span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="女"
-                  checked={formData.gender === '女'}
-                  onChange={(e) => handleInputChange('gender', e.target.value)}
-                  className="mr-2"
-                />
-                <span className="text-text-primary">女</span>
-              </label>
+            <div className="mt-3">
+              <select
+                value={formData.gender}
+                onChange={(e) => handleInputChange('gender', e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-white text-text-primary"
+              >
+                <option value="">请选择性别</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
             </div>
           </div>
         </div>
