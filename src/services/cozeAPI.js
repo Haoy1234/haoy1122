@@ -108,19 +108,12 @@ const parseAPIResponse = (responseData) => {
       shiyefenxi: cleanText(data.shiyefenxi || data.事业分析 || data.career_analysis || ''),
       aiqingfenxi: cleanText(data.aiqingfenxi || data.爱情分析 || data.love_analysis || data.感情分析 || ''),
       jinriyunshi: cleanText(data.jinriyunshi || data.今日运势 || data.today_fortune || ''),
-      jiankangfenxi: cleanText(data.jiankangfenxi || data.健康分析 || data.health_analysis || data.jinqianfenxi || data.jiankang || data.health || ''),
+      jiankangfenxi: cleanText(data.jiankangfenxi || data.健康分析 || data.health_analysis || data.jinqianfenxi || data.jiankang || data.health || '健康分析数据暂未返回'),
       shenshafenxi: cleanText(data.shenshafenxi || data.神煞分析 || data.deity_analysis || ''),
-      shishenfenxi: cleanText(data.shishenfenxi || data.十神分析 || data.ten_gods_analysis || '')
+      shishenfenxi: cleanText(data.shishenfenxi || data.十神分析 || data.ten_gods_analysis || '十神分析数据暂未返回')
     }
     
     console.log('✅ 数据解析完成:', result)
-    console.log('🔍 API原始数据所有字段:', Object.keys(data))
-    console.log('🔍 查找健康相关字段:')
-    Object.keys(data).forEach(key => {
-      if (key.includes('健康') || key.includes('health') || key.includes('jiankang') || key.includes('jinqian')) {
-        console.log(`  - ${key}: ${data[key]}`)
-      }
-    })
     return result
     
   } catch (error) {

@@ -2,11 +2,8 @@ import React from 'react'
 import html2canvas from 'html2canvas'
 
 const ResultPage = ({ data }) => {
-  // 调试：打印所有数据
-  console.log('🎯 ResultPage 接收到的数据:', data)
-  console.log('🎯 健康分析数据:', data?.jiankangfenxi)
-  console.log('🎯 神煞分析原始数据:', data?.shenshafenxi)
-  console.log('🎯 神煞分析处理后数据:', processText(data?.shenshafenxi))
+  // 调试：打印关键数据
+  console.log('🎯 ResultPage 接收到的数据字段:', data ? Object.keys(data) : 'data为空')
 
   const handleSaveImage = async () => {
     try {
@@ -607,7 +604,7 @@ const ResultPage = ({ data }) => {
           wordWrap: 'break-word',
           wordBreak: 'break-word'
         }}>
-          {processText(data?.jiankangfenxi) || `调试: 健康分析字段为空\n原始数据: ${JSON.stringify(data?.jiankangfenxi)}\n所有字段: ${data ? Object.keys(data).join(', ') : 'data为空'}`}
+          {processText(data?.jiankangfenxi)}
         </div>
 
         {/* 感情分析背景框 */}
