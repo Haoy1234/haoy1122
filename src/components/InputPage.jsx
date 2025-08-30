@@ -95,7 +95,15 @@ const InputPage = ({ onSubmit }) => {
       {/* 标题区域 */}
       <div className="mb-6 text-center">
         <div className="flex items-center justify-center mb-4">
-          <div className="w-6 h-6 bg-yellow-600 rounded mr-2"></div>
+          <img 
+            src="/images/Logo图标 (node-id=142).png" 
+            alt="黄小仙Logo" 
+            className="w-8 h-8 mr-3"
+            onError={(e) => {
+              console.error('Logo图标加载失败:', e)
+              e.target.style.display = 'none'
+            }}
+          />
           <h1 className="text-2xl font-bold text-text-primary">黄小仙来也</h1>
         </div>
         <p className="text-text-secondary text-sm">请填写您的基本信息，开始八字分析</p>
