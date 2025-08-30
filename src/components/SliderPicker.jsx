@@ -22,6 +22,40 @@ const SliderPicker = ({
     }
   }, [value, options])
 
+  // 添加全局事件监听器
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      if (isDragging) {
+        handleMouseMove(e)
+      }
+    }
+
+    const handleGlobalMouseUp = () => {
+      if (isDragging) {
+        handleMouseUp()
+      }
+    }
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleGlobalMouseMove)
+      document.addEventListener('mouseup', handleGlobalMouseUp)
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove)
+      document.removeEventListener('mouseup', handleGlobalMouseUp)
+    }
+  }, [isDragging, startY, scrollTop])
+
+  // 清理定时器
+  useEffect(() => {
+    return () => {
+      if (handleScroll.timeoutId) {
+        clearTimeout(handleScroll.timeoutId)
+      }
+    }
+  }, [])
+
   const scrollToIndex = (index, smooth = true) => {
     if (containerRef.current) {
       // 计算居中位置：选项位置 - 容器高度的一半 + 选项高度的一半
@@ -39,23 +73,45 @@ const SliderPicker = ({
     }
   }
 
-  const handleScroll = () => {
-    if (containerRef.current && !isDragging) {
-      const scrollTop = containerRef.current.scrollTop
-      const containerHeight = containerRef.current.clientHeight
-      
-      // 计算当前中心位置对应的选项索引
-      const centerPosition = scrollTop + (containerHeight / 2)
-      const index = Math.round(centerPosition / itemHeight)
-      const clampedIndex = Math.max(0, Math.min(index, options.length - 1))
-      
-      if (options[clampedIndex] && options[clampedIndex] !== value) {
-        onChange(options[clampedIndex])
-      }
+  const getCurrentIndex = () => {
+    if (!containerRef.current) return 0
+    const scrollTop = containerRef.current.scrollTop
+    const containerHeight = containerRef.current.clientHeight
+    const centerPosition = scrollTop + (containerHeight / 2)
+    const index = Math.round(centerPosition / itemHeight)
+    return Math.max(0, Math.min(index, options.length - 1))
+  }
+
+  const updateCurrentValue = () => {
+    const currentIndex = getCurrentIndex()
+    if (options[currentIndex] && options[currentIndex] !== value) {
+      onChange(options[currentIndex])
     }
   }
 
+  const snapToNearestOption = () => {
+    if (containerRef.current) {
+      const currentIndex = getCurrentIndex()
+      scrollToIndex(currentIndex, true)
+      updateCurrentValue()
+    }
+  }
+
+  // 处理原生滚动事件（鼠标滚轮、触摸板等）
+  const handleScroll = () => {
+    if (!isDragging) {
+      // 延迟更新值，避免滚动过程中频繁触发
+      clearTimeout(handleScroll.timeoutId)
+      handleScroll.timeoutId = setTimeout(() => {
+        updateCurrentValue()
+        snapToNearestOption()
+      }, 150)
+    }
+  }
+
+  // 鼠标拖拽事件
   const handleMouseDown = (e) => {
+    e.preventDefault()
     setIsDragging(true)
     setStartY(e.clientY)
     setScrollTop(containerRef.current.scrollTop)
@@ -65,34 +121,21 @@ const SliderPicker = ({
     if (!isDragging) return
     e.preventDefault()
     const y = e.clientY
-    const walk = (y - startY) * 2
-    containerRef.current.scrollTop = scrollTop - walk
-  }
-
-  const snapToNearestOption = () => {
-    if (containerRef.current) {
-      const scrollTop = containerRef.current.scrollTop
-      const containerHeight = containerRef.current.clientHeight
-      
-      // 计算当前中心位置对应的选项索引
-      const centerPosition = scrollTop + (containerHeight / 2)
-      const index = Math.round(centerPosition / itemHeight)
-      const clampedIndex = Math.max(0, Math.min(index, options.length - 1))
-      
-      // 滚动到最近的选项并更新值
-      scrollToIndex(clampedIndex, true)
-      if (options[clampedIndex] && options[clampedIndex] !== value) {
-        onChange(options[clampedIndex])
-      }
-    }
+    const deltaY = startY - y
+    const newScrollTop = scrollTop + deltaY
+    containerRef.current.scrollTop = newScrollTop
   }
 
   const handleMouseUp = () => {
-    setIsDragging(false)
-    setTimeout(snapToNearestOption, 50) // 短暂延迟确保滚动完成
+    if (isDragging) {
+      setIsDragging(false)
+      setTimeout(snapToNearestOption, 100)
+    }
   }
 
+  // 触摸事件
   const handleTouchStart = (e) => {
+    e.preventDefault()
     setIsDragging(true)
     setStartY(e.touches[0].clientY)
     setScrollTop(containerRef.current.scrollTop)
@@ -100,14 +143,18 @@ const SliderPicker = ({
 
   const handleTouchMove = (e) => {
     if (!isDragging) return
+    e.preventDefault()
     const y = e.touches[0].clientY
-    const walk = (y - startY) * 1
-    containerRef.current.scrollTop = scrollTop - walk
+    const deltaY = startY - y
+    const newScrollTop = scrollTop + deltaY
+    containerRef.current.scrollTop = newScrollTop
   }
 
   const handleTouchEnd = () => {
-    setIsDragging(false)
-    setTimeout(snapToNearestOption, 100) // 延迟执行，确保滚动完成
+    if (isDragging) {
+      setIsDragging(false)
+      setTimeout(snapToNearestOption, 100)
+    }
   }
 
   return (
@@ -143,9 +190,6 @@ const SliderPicker = ({
           }}
           onScroll={handleScroll}
           onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
