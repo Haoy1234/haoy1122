@@ -396,7 +396,7 @@ const ResultPage = ({ data }) => {
           fontStyle: 'normal',
           fontWeight: '500',
           fontSize: '7.5px',
-          lineHeight: '10px',
+          lineHeight: '11px',
           color: '#000000',
           overflow: 'hidden',
           whiteSpace: 'pre-wrap',
